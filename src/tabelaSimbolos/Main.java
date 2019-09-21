@@ -49,6 +49,7 @@ public class Main {
 		}
 		
 		// Mostra na tela
+		System.out.println("Tabela com os 5 elementos");
 		System.out.println(hashTable);
 		
 //		/**
@@ -60,30 +61,29 @@ public class Main {
 ////		System.out.println(hashTable.replace(key, oldValue, newValue));
 ////		System.out.println(hashTable.replace(key, oldValue, newValue));
 //
-//		// Mostra na tela
-//		System.out.println(hashTable);
-//		
+		// Mostra na tela
+		System.out.println(hashTable);
+				
 		/**
 		 * Remove 3 elementos
 		 */
-		hashTable.entrySet().removeIf(entry -> entry.equals(element2));
+		hashTable.entrySet().removeIf(entry -> entry.getKey().equals(element2));
 
 		// Mostra na tela
+		System.out.println("Ao remover o elemento 2 da tabela:");
 		System.out.println(hashTable);
-//		
-//		/**
-//		 * Busca 1 elemento inexistente na tabela
-//		 */
-//		System.out.println(hashTable.values().contains(element2));
-//		
-//		/**
-//		 * Busca 3 elementos existentes na tabela
-//		 */
-//		System.out.println(hashTable.values().contains(element1));
-//		System.out.println(hashTable.values().contains(element3));
-//		System.out.println(hashTable.values().contains(element5));
-//		
 		
+		/**
+		 * Busca 1 elemento inexistente na tabela
+		 */
+		System.out.println("Resultado ao procurar o elemento 2 da tabela: "+hashTable.values().contains(element2));
+		
+		/**
+		 * Busca 3 elementos existentes na tabela
+		 */
+		System.out.println("Resultado ao procurar o elemento 1 da tabela: "+hashTable.containsKey(element1));
+		System.out.println("Resultado ao procurar o elemento 3 da tabela: " +hashTable.containsKey(element3));
+		System.out.println("Resultado ao procurar o elemento 5 da tabela: " +hashTable.containsKey(element5));
 	}
 
 }
