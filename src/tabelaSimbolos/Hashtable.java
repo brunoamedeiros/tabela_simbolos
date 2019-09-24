@@ -1,113 +1,108 @@
 package tabelaSimbolos;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Hashtable {
 
-    public static class HTObject {
-        public String key;
-        public Integer value;
-        public Category category;
-    }
+	public LinkedList<Element>[] arr;
+	public int ARR_SIZE;
 
-    public static int ARR_SIZE = 128;
-    @SuppressWarnings("unchecked")
-	public LinkedList<HTObject>[] arr = new LinkedList[ARR_SIZE];
+	public Hashtable(int ARR_SIZE) {
+		this.ARR_SIZE = ARR_SIZE;
+		
+		this.arr = new LinkedList[this.ARR_SIZE];
+	}
 
-    public Hashtable() {
-        //init vals in array
-        for(int i=0; i<ARR_SIZE; i++) {
-            arr[i] = null;
-        }
-    }
+	private Element getObj(Element element) {
+		if (element == null)
+			return null;
 
-    private HTObject getObj(String key) {
-        if(key == null)
-            return null;
+		int index = Hash.hash(element.getName(), this.ARR_SIZE);
+		LinkedList<Element> items = this.arr[index];
 
-        int index = key.hashCode() % ARR_SIZE;
-        LinkedList<HTObject> items = arr[index];
+		if (items == null)
+			return null;
 
-        if(items == null)
-            return null;
+		for (Element item : items) {
+			if (item.equals(element))
+				return item;
+		}
 
-        for(HTObject item : items) {
-            if(item.key.equals(key))
-                return item;
-        }
+		return null;
+	}
 
-        return null;
-    }
+	public Element get(Element element) {
+		Element item = getObj(element);
 
-    public Integer get(String key) {
-        HTObject item = getObj(key);
+		return item;
+	}
 
-        if(item == null)
-            return null;
-        else
-            return
-            item.value;
-    }
-    
-    public boolean objExists(String key) {
-    	if(getObj(key)!=null) {
-    		return true;
-    	}else {
-    		return false;
-    	}
-    }
+	public boolean objExists(Element element) {
+		if (getObj(element) != null) {
+			return true;
+		}
 
-    public void put(String key, Integer value, Category cat) {
-        int index = key.hashCode() % ARR_SIZE;
-        LinkedList<HTObject> items = arr[index];
+		return false;
+	}
 
-        if(items == null) {
-            items = new LinkedList<HTObject>();
+	public void showAll() {
+		
+		for (LinkedList<Element> item : this.arr) {
+			for (Element obj : item) {
+				System.out.print(obj);
+			}
+		}
+	}
+	
 
-            HTObject item = new HTObject();
-            item.key = key;
-            item.value = value;
-            item.category = cat;
-            items.add(item);
+	public void put(Element element) {
+		int index = Hash.hash(element.getName(), ARR_SIZE);
+		System.out.println(index);
+		LinkedList<Element> items = this.arr[index];
 
-            arr[index] = items;
-        }
-        else {
-            for(HTObject item : items) {
-                if(item.key.equals(key)) {
-                    item.value = value;
-                    return;
-                }
-            }
+		if (items == null) {
+			items = new LinkedList<Element>();
 
-            HTObject item = new HTObject();
-            item.key = key;
-            item.value = value;
-            item.category = cat;
-            items.add(item);
-        }
-    }
-    
-    public void showAll() {
-    	for(LinkedList<HTObject> item : arr) {
-    		for(HTObject obj: item) {
-    			System.out.print("Objeto: "+obj.value+"//");
-    		}
-    	}
-    }
+			Element item = element;
+			items.add(item);
 
-    public void delete(String key) {
-        int index = key.hashCode() % ARR_SIZE;
-        LinkedList<HTObject> items = arr[index];
+			this.arr[index] = items;
+		} else {
+			Element item = element;
+			items.add(item);
+		}
+	}
 
-        if(items == null)
-            return;
+	public void delete(Element element) {
+		int index = Hash.hash(element.getName(), ARR_SIZE);
+		LinkedList<Element> items = this.arr[index];
 
-        for(HTObject item : items) {
-            if (item.key.equals(key)) {
-                items.remove(item);
-                return;
-            }
-        }
-    }
+		if (items == null)
+			return;
+
+		for (Element item : items) {
+			if (item.equals(element)) {
+				items.remove(item);
+				return;
+			}
+		}
+	}
+
+	public LinkedList<Element>[] getArr() {
+		return arr;
+	}
+
+	public void setArr(LinkedList<Element>[] arr) {
+		this.arr = arr;
+	}
+
+	public int getARR_SIZE() {
+		return ARR_SIZE;
+	}
+
+	public void setARR_SIZE(int aRR_SIZE) {
+		ARR_SIZE = aRR_SIZE;
+	}
 }
