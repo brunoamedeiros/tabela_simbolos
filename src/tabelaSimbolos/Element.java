@@ -15,10 +15,6 @@ public class Element {
 		this.allA = allA;
 		this.allB = allB;
 	}
-	
-	public Element() {
-		
-	}
 
 	public String getName() {
 		return name;

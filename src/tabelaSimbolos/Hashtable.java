@@ -1,8 +1,6 @@
 package tabelaSimbolos;
 
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Hashtable {
 
@@ -11,7 +9,7 @@ public class Hashtable {
 
 	public Hashtable(int ARR_SIZE) {
 		this.ARR_SIZE = ARR_SIZE;
-		
+
 		this.arr = new LinkedList[this.ARR_SIZE];
 	}
 
@@ -48,18 +46,19 @@ public class Hashtable {
 	}
 
 	public void showAll() {
-		
+		System.out.println();
 		for (LinkedList<Element> item : this.arr) {
-			for (Element obj : item) {
-				System.out.print(obj);
+			if(item != null) {
+				for (Element obj : item) {
+					System.out.print(obj);
+					System.out.println();
+				}
 			}
 		}
 	}
-	
 
 	public void put(Element element) {
 		int index = Hash.hash(element.getName(), ARR_SIZE);
-		System.out.println(index);
 		LinkedList<Element> items = this.arr[index];
 
 		if (items == null) {

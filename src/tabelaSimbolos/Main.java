@@ -22,21 +22,21 @@ public class Main {
 		hTable.put(element5);
 		
 		// Mostra a tabela
-//		hTable.showAll();
+		hTable.showAll();
 
 		// Deleta o elemento 2
-//		System.out.println("Buscando elemento var2 antes de deletar: "+(hTable.objExists(element2))+"\n");
-//		hTable.delete(element2);
+		System.out.println("Buscando elemento var2 antes de deletar: "+(hTable.objExists(element2))+"\n");
+		hTable.delete(element2);
 
 		// Mostra novamente a tabela
-		// hTable.showAll();
+		 hTable.showAll();
 
 		// Busca um elemento inexistente
-//		System.out.println("Buscando elemento var2 depois de deletar: "+(hTable.objExists(element2))+"\n");
+		System.out.println("Buscando elemento var2 depois de deletar: "+(hTable.objExists(element2))+"\n");
 
 		// Busca elementos existentes
-//		System.out.println("Buscando elemento var1: "+(hTable.objExists(element1))+"\n");
-//		System.out.println("Buscando elemento abc: "+(hTable.objExists(element3))+"\n");
-//		System.out.println("Buscando elemento par1: "+(hTable.objExists(element5))+"\n");
+		System.out.println("Buscando elemento var1: "+(hTable.objExists(element1))+"\n");
+		System.out.println("Buscando elemento abc: "+(hTable.objExists(element3))+"\n");
+		System.out.println("Buscando elemento par1: "+(hTable.objExists(element5))+"\n");
 	}
 }
