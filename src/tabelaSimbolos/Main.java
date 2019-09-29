@@ -2,7 +2,7 @@ package tabelaSimbolos;
 
 public class Main {
 
-	static Hashtable hTable = new Hashtable(7);
+	static Hashtable hTable = new Hashtable(10);
 
 	public static void main(String[] args) {
 
@@ -10,9 +10,14 @@ public class Main {
 
 		Element element1 = new Element("var1", Category.VARIABLE, 0, 0, null);
 		Element element2 = new Element("var2", Category.VARIABLE, 1, 0, null);
-		Element element3 = new Element("abc", Category.CONSTANT, 0, 2, null);
-		Element element4 = new Element("pq", Category.PROCEDURE, 0, 3, null);
-		Element element5 = new Element("par1", Category.PARAMETER, 0, 0, 0);
+		Element element3 = new Element("var3", Category.VARIABLE, 1, 0, null);
+		Element element4 = new Element("abc", Category.CONSTANT, 0, 2, null);
+		Element element5 = new Element("123", Category.CONSTANT, 0, 2, null);
+		Element element6 = new Element("t1p0", Category.CONSTANT, 0, 2, null);
+		Element element7 = new Element("proc1", Category.PROCEDURE, 0, 3, null);
+		Element element8 = new Element("proc2", Category.PROCEDURE, 0, 3, null);
+		Element element9 = new Element("par1", Category.PARAMETER, 0, 0, 0);
+		Element element10 = new Element("par2", Category.PARAMETER, 0, 0, 0);
 
 		// Adiciona na tabela
 		hTable.put(element1);
@@ -20,24 +25,51 @@ public class Main {
 		hTable.put(element3);
 		hTable.put(element4);
 		hTable.put(element5);
+		hTable.put(element6);
+		hTable.put(element7);
+		hTable.put(element8);
+		hTable.put(element9);
+		hTable.put(element10);
 		
 		// Mostra a tabela
+		System.out.println("Elementos iniciais:");
+		hTable.showAll();
+		
+		//Alterar dados de 5 elementos
+		//Troca o nome do elemento 1
+		hTable.updateName(element1, "variavel1");
+		//Troca a categoria do elemento 2
+		hTable.getObj(element2).setCategoria(Category.PROCEDURE);
+		//Troca o nome do elemento 3
+		hTable.updateName(element3, "variavel3");
+		//Troca o nível do elemento 4
+		hTable.getObj(element4).setNivel(1);
+		//Troca a categoria do elemento 10
+		hTable.getObj(element10).setCategoria(Category.CONSTANT);
+		
+		//Mostra a tabela
+		System.out.println("Elementos após alteração:");
 		hTable.showAll();
 
-		// Deleta o elemento 2
-		System.out.println("Buscando elemento var2 antes de deletar: "+(hTable.objExists(element2))+"\n");
+		//Deleta três elementos:
+		System.out.println("Elementos após deletar os elementos 'var2', 't1p0' e 'par2':");
 		hTable.delete(element2);
+		hTable.delete(element6);
+		hTable.delete(element10);
 
 		// Mostra novamente a tabela
 		 hTable.showAll();
 
 		// Busca um elemento inexistente
-		System.out.println("Buscando elemento var2 depois de deletar: "+(hTable.objExists(element2))+"\n");
+		System.out.print("Buscando o elemento 2 da tabela, que foi deletado: ");
+		hTable.objExists(element2);
+		System.out.println("");
 
 		// Busca elementos existentes
-		System.out.println("Buscando elemento var1: "+(hTable.objExists(element1))+"\n");
-		System.out.println("Buscando elemento abc: "+(hTable.objExists(element3))+"\n");
-		System.out.println("Buscando elemento par1: "+(hTable.objExists(element4))+"\n");
-		System.out.println("Buscando elemento par1: "+(hTable.objExists(element5))+"\n");
+		System.out.println("Buscando elementos existentes na tabela: \n");
+		hTable.objExists(element1);
+		hTable.objExists(element3);
+		hTable.objExists(element4);
+		hTable.objExists(element5);
 	}
 }

@@ -13,7 +13,7 @@ public class Hashtable {
 		this.arr = new LinkedList[this.ARR_SIZE];
 	}
 
-	private Element getObj(Element element) {
+	public Element getObj(Element element) {
 		if (element == null)
 			return null;
 
@@ -31,6 +31,12 @@ public class Hashtable {
 		return null;
 	}
 
+	public void updateName(Element element, String name) {
+		delete(element);
+		element.setName(name);
+		put(element);
+	}
+	
 	public Element get(Element element) {
 		Element item = getObj(element);
 
@@ -39,9 +45,13 @@ public class Hashtable {
 
 	public boolean objExists(Element element) {
 		if (getObj(element) != null) {
+			System.out.println("Elemento encontrado, dados: ");
+			System.out.println("Nome: "+element.getName()+" Categoria: "+element.getCategoria()+
+					" Nível: "+element.getNivel()+" Geral A: "+element.getAllA()+" Geral B: "+element.getAllB());
 			return true;
 		}
-
+		
+		System.out.println("Elemento inexistente na tabela!");
 		return false;
 	}
 
@@ -51,7 +61,7 @@ public class Hashtable {
 		String leftAlignFormat = "| %-9s | %-10s | %-5d | %-7d | %-7d |%n";
 
 		System.out.format("+-----------+------------+-------+---------+---------+ %n");
-		System.out.format("| Name      | Category   | Level | Geral A | Geral B | %n");
+		System.out.format("| Nome      | Categoria  | Nível | Geral A | Geral B | %n");
 		System.out.format("+-----------+------------+-------+---------+---------+ %n");
 		for (int i = 0; i < 5; i++) {
 		}
@@ -62,7 +72,7 @@ public class Hashtable {
 				}
 			}
 		}
-		System.out.format("+-----------+------------+-------+---------+---------+ %n");
+		System.out.format("+-----------+------------+-------+---------+---------+ %n\n");
 	}
 
 	public void put(Element element) {
