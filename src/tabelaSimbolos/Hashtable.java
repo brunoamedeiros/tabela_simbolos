@@ -46,15 +46,23 @@ public class Hashtable {
 	}
 
 	public void showAll() {
-		System.out.println();
+
+		
+		String leftAlignFormat = "| %-9s | %-10s | %-5d | %-7d | %-7d |%n";
+
+		System.out.format("+-----------+------------+-------+---------+---------+ %n");
+		System.out.format("| Name      | Category   | Level | Geral A | Geral B | %n");
+		System.out.format("+-----------+------------+-------+---------+---------+ %n");
+		for (int i = 0; i < 5; i++) {
+		}
 		for (LinkedList<Element> item : this.arr) {
 			if(item != null) {
-				for (Element obj : item) {
-					System.out.print(obj);
-					System.out.println();
+				for (Element element : item) {
+					System.out.format(leftAlignFormat, element.getName(), element.getCategoria(), element.getNivel(), element.getAllA(), element.getAllB());
 				}
 			}
 		}
+		System.out.format("+-----------+------------+-------+---------+---------+ %n");
 	}
 
 	public void put(Element element) {

@@ -37,6 +37,7 @@ public class Main {
 		// Busca elementos existentes
 		System.out.println("Buscando elemento var1: "+(hTable.objExists(element1))+"\n");
 		System.out.println("Buscando elemento abc: "+(hTable.objExists(element3))+"\n");
+		System.out.println("Buscando elemento par1: "+(hTable.objExists(element4))+"\n");
 		System.out.println("Buscando elemento par1: "+(hTable.objExists(element5))+"\n");
 	}
 }
