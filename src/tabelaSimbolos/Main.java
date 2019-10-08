@@ -2,12 +2,12 @@ package tabelaSimbolos;
 
 public class Main {
 
-	static Hashtable hTable = new Hashtable(10);
+	static Integer ARR_SIZE = Prime.nextPrime(10);
+	static Hashtable hTable = new Hashtable(ARR_SIZE);
 
 	public static void main(String[] args) {
 
 		// Inicia a tabela
-
 		Element element1 = new Element("var1", Category.VARIABLE, 0, 0, null);
 		Element element2 = new Element("var2", Category.VARIABLE, 1, 0, null);
 		Element element3 = new Element("var3", Category.VARIABLE, 1, 0, null);
@@ -30,35 +30,39 @@ public class Main {
 		hTable.put(element8);
 		hTable.put(element9);
 		hTable.put(element10);
-		
+
 		// Mostra a tabela
 		System.out.println("Elementos iniciais:");
 		hTable.showAll();
-		
-		//Alterar dados de 5 elementos
-		//Troca o nome do elemento 1
-		hTable.updateName(element1, "variavel1");
-		//Troca a categoria do elemento 2
+
+		// Alterar dados de 5 elementos
+		// Troca o nome do elemento 1
+		hTable.getObj(element1).setCategoria(Category.PARAMETER);
+
+		// Troca a categoria do elemento 2
 		hTable.getObj(element2).setCategoria(Category.PROCEDURE);
-		//Troca o nome do elemento 3
-		hTable.updateName(element3, "variavel3");
-		//Troca o nível do elemento 4
+
+		// Troca o nome do elemento 3
+		hTable.getObj(element4).setCategoria(Category.VARIABLE);
+
+		// Troca o nível do elemento 4
 		hTable.getObj(element4).setNivel(1);
-		//Troca a categoria do elemento 10
+
+		// Troca a categoria do elemento 10
 		hTable.getObj(element10).setCategoria(Category.CONSTANT);
-		
-		//Mostra a tabela
+
+		// Mostra a tabela
 		System.out.println("Elementos após alteração:");
 		hTable.showAll();
 
-		//Deleta três elementos:
+		// Deleta três elementos:
 		System.out.println("Elementos após deletar os elementos 'var2', 't1p0' e 'par2':");
 		hTable.delete(element2);
 		hTable.delete(element6);
 		hTable.delete(element10);
 
 		// Mostra novamente a tabela
-		 hTable.showAll();
+		hTable.showAll();
 
 		// Busca um elemento inexistente
 		System.out.print("Buscando o elemento 2 da tabela, que foi deletado: ");

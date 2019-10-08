@@ -31,12 +31,6 @@ public class Hashtable {
 		return null;
 	}
 
-	public void updateName(Element element, String name) {
-		delete(element);
-		element.setName(name);
-		put(element);
-	}
-	
 	public Element get(Element element) {
 		Element item = getObj(element);
 
@@ -47,7 +41,7 @@ public class Hashtable {
 		if (getObj(element) != null) {
 			System.out.println("Elemento encontrado, dados: ");
 			System.out.println("Nome: "+element.getName()+" Categoria: "+element.getCategoria()+
-					" Nível: "+element.getNivel()+" Geral A: "+element.getAllA()+" Geral B: "+element.getAllB());
+					" Nível: "+element.getNivel()+" Geral A: "+element.getAllA()+" Geral B: "+element.getAllB() + "\n");
 			return true;
 		}
 		
